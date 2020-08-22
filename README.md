@@ -1,74 +1,99 @@
+<p align="center">
+  <img width="200" height="200" src="/static/icon.png">
+</p>
+
 # Chorale
 
-Chorale is a Notion renderer that makes it easy to share public Notion articles that look good and load _extremely_ fast.
+Chorale is a set of simple, composable, and well-designed tools for interacting with Notion.
 
-Chorale is built using Next.JS and hosted on Zeit Now. A few details:
+- **Simple**: A library shouldn't be the pain point when you're trying to interact with your content. Chorale makes sure that's not the case. Chorale's APIs are small and easy to use while being incredibly fast and efficient.
+- **Composable**: All of Chorale's tools are built on top of each other like legos. If you need to customize anything, you can easily swap out one of the pieces for your own.
+- **Well-designed**: Chorale is a joy to use. Time is spent designing each of Chorale's APIs, making sure they're not only functional, but that they just feel good to develop with.
 
-1. **Chorale is faster than vanilla Notion.** Chorale renders pages 2 to 3 times faster than a regular Public Notion page.
-2. **Chorale allows custom domain support.** If you host Chorale yourself, you can easily hook up your own custom domain.
-3. **Chorale allows custom theming.** Chorale is open source and allows easy changing of block formatting.
-4. **Chorale updates in real time without requiring a rebuild.**
-5. **Caches content efficiently and serves all content from the edge.**
+Chorale is currently under active development. This page will be updated often, so be sure to check it!
 
-[GitHub Link](https://github.com/samwightt/chorale-renderer)
+# Things You Can Do With Chorale
 
-# How to use
+- **Interact with the Notion API**: Chorale's Notion API interface lets you easily get content from Notion's private API. It's completely type-safe and is built to run incredibly fast with async I/O.
+- **Render Notion content**: Chorale's Notion page renderer can render Notion pages up to 10x faster than the default Notion app; it can render pages in *microseconds*. It's completely modular and customizable: you control the output.
+- **Run a rendering server**: Use Notion as a CMS and render pages on demand. Attach a custom domain and custom theme to your Notion page, rendering updates in real-time.
+- **Generate static pages**: Use Notion as a CMS to generate static pages with Chorale. Chorale's page generator can efficiently batch page renderings at the same time, generating your site in half the amount of time.
 
-Chorale only works with published Notion pages, not private pages. To make your page public, go to the Share menu and click on 'Public Access'. Then click 'Copy Link'.
+## Supported Blocks
 
-Your link will look something like this:
+- [x] Text
+- [x] Page
+- [ ] To-do list
+- [x] Heading 1
+- [x] Heading 2
+- [x] Heading 3
+- [x] Bulleted list
+- [x] Numbered list
+- [x] Toggle list
+- [x] Quote
+- [x] Divider
+- [ ] Link to page
+- [ ] Callout
+- [ ] Image
+- [ ] Web bookmark
+- [ ] Video
+- [ ] Audio
+- [ ] Code
+- [ ] File
+- [ ] Embed
+- [ ] Google Drive
+- [ ] Tweet
+- [ ] GitHub Gist
+- [ ] Google Maps
+- [ ] Figma
+- [ ] Abstract
+- [ ] Invision
+- [ ] Framer
+- [ ] Whimsical
+- [ ] Miro
+- [ ] PDF
+- [ ] Loom
+- [ ] Typeform
+- [ ] Codepen
+- [ ] Table of Contents
+- [ ] Block equation
+- [ ] Template button
+- [ ] Breadcrumb
 
-[https://www.notion.so/Chorale-ef28925f63894c1d962da11c86879897](https://www.notion.so/Chorale-ef28925f63894c1d962da11c86879897)
+## Supported Formatting
+- [x] Bold
+- [x] Italicize
+- [x] Underline
+- [x] Strikethrough
+- [x] Code
+- [x] Link
+- [x] Color
+- [ ] Inline Math
+- [ ] Mentions
+- [ ] Comments
 
-Simply replace `[www.notion.so](http://www.notion.so)` with `[chorale.app](http://chorale.app)` and view the page in your web browser. Here's the example link for this page:
+# Running Locally
 
-[https:/chorale.app/Chorale-ef28925f63894c1d962da11c86879897](http://chorale.app/Chorale-ef28925f63894c1d962da11c86879897)
+Chorale hasn't been published to Crates.io yet, so to work with it, you'll need to download the workspace. Here's the commands to do that (make sure you have the latest version of Rust and Cargo installed!):
 
-# How it works
+```sh
+    git clone https://github.com/samwightt/chorale-renderer -b develop
+    cd chorale-renderer
+    cargo build
+```
 
-Chorale is built using Next.JS and hosted on Zeit Now. Thanks to Now's **[Serverless Prerendering](https://zeit.co/blog/serverless-pre-rendering)** feature, Chorale can render Notion pages on each visit while still caching the results on the edge. This means that it gets the speed benefits of a build system, but still can render content dynamically.
+To run the testing crate:
 
-Chorale is built to be as fast as possible. It scores extremely high on speed tests.
+```sh
+    cd testing
+    cargo run
+```
 
-Chorale is still in the early stages of development and has a long time to go.
-
-# Supported Blocks
-
-- Text
-- Heading 1
-- Heading 2
-- Heading 3
-- Bulleted List
-- Numbered List
-- Columns
-- Quote Block
-- Divider
-- Image (early)
-
-# Roadmap
-
-- Implementing image support with exact sizing.
-- Adding page covers and page icons.
-- Improve design of titles and pages.
-- Implementing page links.
-- Implementing all other non-embeded and non-database blocks.
-- Implementing database blocks/views.
-- Implementing some kind of blogging support.
-
-## Changelog
-
-- 2/11/2020:
-  - Added support for images
-  - Added better code segment rendering
-  - Added better column support
-  - Better Typescript types for API responses.
-  - Better rendering speed.
-  - Smaller bundle size with better `font-family` that doesn't require Google Fonts.
-  - Added block and text color support (partially, doesn't work with backgrounds).
-  - Added divider support
-  - Added early image support
-- 2/10/2020:
-  - Initial version.
+To run the benchmarks:
+```sh
+    cd testing
+    cargo bench
+```
 
 # License Info
 
